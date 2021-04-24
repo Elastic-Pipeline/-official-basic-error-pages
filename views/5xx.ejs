@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../@official-generic-layout/partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../@official-generic-layout/partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1><%- status -%> - Internal Server Error Occured</h1>
+        <h3>Error: <%- error_msg -%></h3>
+        <p>Url: <%- url -%></p>
+        <% if (isDevelopmentMode()) { %>
+        <code><%- error -%></code>
+        <% } %>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../@official-generic-layout/partials/footer'); %>
+</footer>
+
+</body>
+</html>

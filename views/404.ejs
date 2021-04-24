@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../@official-generic-layout/partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../../@official-generic-layout/partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1><%- status -%> - <%- error -%></h1>
+        <p>Sorry, we cannot find `<%- url -%>` page!</p>
+    </div>
+</main>
+
+<footer>
+    <%- include('../../@official-generic-layout/partials/footer'); %>
+</footer>
+
+</body>
+</html>
