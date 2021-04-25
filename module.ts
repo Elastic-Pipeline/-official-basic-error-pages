@@ -61,7 +61,6 @@ class BaseModule extends Module
                     res.type('txt').send(err.stack);
                 }
 
-                Logger.error(err.message, err.stack);
             });
         });
     }
