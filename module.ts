@@ -1,9 +1,8 @@
-import { AttachmentAppIntegration, Module, ModuleManager } from "../../API/Module";
+import { AttachmentAppIntegration, Module, ModuleManager } from "../../API/Modules/Module";
 import fs from "fs";
 import path from "path";
 import { NextFunction, Request, Response, Application } from 'express';
-import { HttpException } from "../../API/Routing";
-import { Logger } from "../../API/Logging";
+import { HttpException } from "../../API/Routing/Routing";
 
 class BaseModule extends Module
 {
