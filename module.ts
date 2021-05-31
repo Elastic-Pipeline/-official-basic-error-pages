@@ -21,39 +21,26 @@ class BaseModule extends Module
             app.use((err: HttpException, req: Request, res: Response, next: NextFunction) => {
                 app.set('views', __dirname);
                 res.status((err.status || 500) as number);
+
                 if (err.status == 404)
                 {
-                    // respond with html page
-                    if (req.accepts('html')) 
-                    {
-                        return res.render('views/404', { url: req.url, status: err.status, error: err.message });
-                    }
-        
                     // respond with json
                     if (req.accepts('json')) 
                     {
                         return res.json({ error: 'Not found' });
                     }
 
-                    // default to plain-text. send()
-                    return res.type('txt').send('Not found');
+                    return res.render('views/404', { url: req.url, status: err.status, error: err.message });
                 }
                 else
                 {
-                    // respond with html page
-                    if (req.accepts('html')) 
-                    {
-                        return res.render('views/5xx', { url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });
-                    }
-        
                     // respond with json
                     if (req.accepts('json')) 
                     {
                         return res.json({ url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });
                     }
-                    
-                    // default to plain-text. send()
-                    return res.type('txt').send(err.stack);
+                                         
+                    return res.render('views/5xx', { url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });
                 }
             });
         }, AttachmentAppIntegration.POST);
