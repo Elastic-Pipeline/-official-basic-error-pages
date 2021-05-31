@@ -10,7 +10,7 @@ class BaseModule extends Module
     constructor()
     {
         super("Basic Error Pages", fs.readFileSync(path.resolve(__dirname, "./version.txt")).toString("utf-8"));
-        this.RegisterAppIntegration((app: Application) => 
+        this.RegisterAppIntegration((app: Application) =>
         {
             app.use((req, res, next) =>
             {
@@ -18,7 +18,7 @@ class BaseModule extends Module
                 err.status = 404;
                 return next(err);
             });
-    
+
             app.use((err: HttpException, req: Request, res: Response, next: NextFunction) => {
                 app.set('views', __dirname);
                 res.status((err.status || 500) as number);
