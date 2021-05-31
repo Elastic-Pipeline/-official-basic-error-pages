@@ -11,11 +11,11 @@
 
         <main>
             <div class="jumbotron">
-                <h1><%- status -%> - Internal Server Error Occured</h1>
-                <h3>Error: <%- error_msg -%></h3>
-                <p>Url: <%- url -%></p>
+                <h1><%= status -%> - Internal Server Error Occured</h1>
+                <h3>Error: <%= error_msg -%></h3>
+                <p>Url: <%= url -%></p>
                 <% if (isDevelopmentMode()) { %>
-                <code><%- error -%></code>
+                <code><%= error -%></code>
                 <% } %>
             </div>
         </main>
