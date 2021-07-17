@@ -34,13 +34,15 @@ class BaseModule extends Module
                 }
                 else
                 {
+                    if (err.message.includes(".ejs") && err.message.includes("<%") && err.message.includes("%>"))
+                    {
+                        const splitError = err.message.split('\n');
+                        err.message = splitError[splitError.length - 1];
+                        err.stack = Route.SanitizeHTML(splitError.slice(0, splitError.length - 1).join('\n')).split('\n').join('</br>');
+                    }
                     if (req.accepts('html'))
                     {
-                        try {
-                            return Route.SafeRender(res, 'views/5xx', { url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });
-                        } catch (error) {
-                            Logger.error("Fatal Error with the Error Catcher ::>",error);
-                        }
+                        return Route.SafeRender(res, 'views/5xx', { url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });
                     }
 
                     return res.json({ url: req.url, error: err.stack, error_msg: err.message, status: res.statusCode });

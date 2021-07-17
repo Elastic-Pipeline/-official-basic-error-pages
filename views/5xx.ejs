@@ -15,7 +15,7 @@
                 <h3>Error: <%= error_msg -%></h3>
                 <p>Url: <%= url -%></p>
                 <% if (isDevelopmentMode()) { %>
-                <code><%= error -%></code>
+                <code><%- error -%></code>
                 <% } %>
             </div>
         </main>
